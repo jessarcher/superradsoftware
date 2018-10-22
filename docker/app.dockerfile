@@ -9,3 +9,5 @@ RUN apt-get update && \
         pdo \
         pdo_pgsql \
         pgsql
+
+COPY laravel.pool.conf /usr/local/etc/php-fpm.d/
