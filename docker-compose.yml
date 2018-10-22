@@ -16,6 +16,12 @@ services:
       DB_DATABASE: app
       DB_USERNAME: app
       DB_PASSWORD: app
+      REDIS_HOST: redis
+      REDIS_PASSWORD: null
+      REDIS_PORT: 6379
+      CACHE_DRIVER: redis
+      SESSION_DRIVER: redis
+      QUEUE_CONNECTION: redis
 
   web:
     build:
@@ -36,5 +42,12 @@ services:
       POSTGRES_PASSWORD: app
       POSTGRES_DB: app
 
+  redis:
+    image: redis:5
+    entrypoint: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+
 volumes:
   postgres-data:
+  redis-data:
